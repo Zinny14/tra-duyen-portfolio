@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nguyễn Thị Trà Duyên — Digital Marketing Executive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rose:      #C9705A;
+      --rose-l:    #E8A898;
+      --rose-ll:   #F5DED8;
+      --sand:      #F7F3EE;
+      --sand-d:    #EDE6DC;
+      --ink:       #1A1612;
+      --ink-mid:   #4A3F38;
+      --ink-muted: #8C7B72;
+      --white:     #FFFFFF;
+      --border:    #DDD5CC;
+      --accent:    #8B6A5A;
+      --radius: 4px;
+      --trans: 220ms ease;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--ink); line-height: 1.7; overflow-x: hidden; }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(255,255,255,0.93);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600; color: var(--rose); letter-spacing: 0.02em; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mid); transition: color var(--trans); }
+    .nav-links a:hover { color: var(--rose); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: var(--sand);
+      display: flex; align-items: center;
+      padding: 100px 48px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-circle { position: absolute; border-radius: 50%; background: var(--rose-ll); }
+    .hero-circle.c1 { width: 700px; height: 700px; right: -200px; top: -180px; opacity: 0.5; }
+    .hero-circle.c2 { width: 260px; height: 260px; left: 5%; bottom: -60px; opacity: 0.25; }
+
+    .hero-inner {
+      max-width: 1140px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr auto; gap: 72px;
+      align-items: center; position: relative; z-index: 1;
+    }
+    .hero-left { max-width: 580px; }
+
+    .hero-tag {
+      display: inline-block; font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--rose); background: rgba(201,112,90,0.1);
+      border: 1px solid rgba(201,112,90,0.28); padding: 6px 14px;
+      border-radius: 100px; margin-bottom: 22px;
+    }
+    .hero-name { font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 700; color: var(--ink); margin-bottom: 12px; }
+    .hero-name em { color: var(--rose); font-style: italic; }
+    .hero-role { font-size: 1rem; font-weight: 500; color: var(--ink-mid); margin-bottom: 20px; }
+    .hero-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 24px; }
+    .pill { font-size: 0.73rem; font-weight: 500; padding: 4px 13px; border: 1px solid var(--rose-l); border-radius: 100px; color: var(--rose); }
+    .hero-desc { font-size: 0.93rem; color: var(--ink-mid); line-height: 1.8; margin-bottom: 32px; }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: var(--rose); color: var(--white);
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 14px 28px; border-radius: var(--radius);
+      transition: background var(--trans), transform var(--trans); cursor: pointer;
+    }
+    .hero-cta:hover { background: var(--accent); transform: translateY(-2px); }
+
+    /* Photo + Stats column */
+    .hero-right { display: flex; flex-direction: column; gap: 24px; align-items: center; }
+    .hero-photo-wrap {
+      width: 300px; height: 370px;
+      border-radius: 180px 180px 140px 140px;
+      overflow: hidden; flex-shrink: 0;
+      border: 4px solid var(--white);
+      box-shadow: 0 20px 60px rgba(201,112,90,0.18);
+      background: var(--sand-d);
+    }
+    .hero-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+    .hero-photo-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+      color: var(--ink-muted); font-size: 0.8rem; text-align: center; padding: 20px;
+    }
+    .hero-photo-placeholder svg { width: 40px; height: 40px; opacity: 0.4; }
+
+    .hero-stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 300px; }
+    .stat-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: 10px;
+      padding: 18px 16px; transition: transform var(--trans), box-shadow var(--trans); cursor: default;
+    }
+    .stat-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.07); }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--rose); line-height: 1; margin-bottom: 5px; }
+    .stat-label { font-size: 0.7rem; font-weight: 500; color: var(--ink-mid); line-height: 1.4; }
+
+    /* ── SECTIONS ── */
+    section { padding: 96px 24px; }
+    .container { max-width: 1140px; margin: 0 auto; width: 100%; }
+    .section-eyebrow { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); margin-bottom: 10px; }
+    .section-title { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 700; color: var(--ink); margin-bottom: 14px; }
+    .section-sub { font-size: 0.95rem; color: var(--ink-mid); max-width: 580px; line-height: 1.8; }
+    .divider { width: 44px; height: 2px; background: var(--rose); margin: 18px 0 44px; }
+
+    /* ── VALUE ── */
+    #value { background: var(--white); }
+    .value-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+    .value-body { font-size: 0.93rem; color: var(--ink-mid); line-height: 1.85; margin-bottom: 20px; }
+    .value-quote { background: var(--sand); border-left: 3px solid var(--rose); padding: 18px 22px; border-radius: 0 8px 8px 0; font-size: 0.9rem; color: var(--ink-mid); font-style: italic; line-height: 1.7; }
+    .value-cards { display: flex; flex-direction: column; gap: 14px; }
+    .value-item { display: flex; gap: 14px; align-items: flex-start; padding: 18px; border: 1px solid var(--border); border-radius: 8px; transition: border-color var(--trans), transform var(--trans); cursor: default; }
+    .value-item:hover { border-color: var(--rose-l); transform: translateX(4px); }
+    .value-icon { width: 38px; height: 38px; flex-shrink: 0; background: var(--rose-ll); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .value-icon svg { width: 17px; height: 17px; color: var(--rose); }
+    .value-item-title { font-weight: 600; font-size: 0.88rem; color: var(--ink); margin-bottom: 3px; }
+    .value-item-desc { font-size: 0.8rem; color: var(--ink-muted); line-height: 1.6; }
+
+    /* ── COMPETENCIES ── */
+    #competencies { background: var(--sand); }
+    .comp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .comp-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; transition: transform var(--trans), box-shadow var(--trans); cursor: default; }
+    .comp-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(0,0,0,0.07); }
+    .comp-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--rose-l); line-height: 1; margin-bottom: 14px; }
+    .comp-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-bottom: 12px; }
+    .comp-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
+    .comp-tag { font-size: 0.7rem; font-weight: 500; padding: 3px 10px; background: var(--rose-ll); color: var(--rose); border-radius: 100px; }
+    .comp-desc { font-size: 0.8rem; color: var(--ink-muted); line-height: 1.7; border-top: 1px solid var(--border); padding-top: 12px; }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: var(--white); }
+    .exp-timeline { position: relative; }
+    .exp-timeline::before { content: ''; position: absolute; left: 11px; top: 0; bottom: 0; width: 1px; background: var(--border); }
+    .exp-item { position: relative; padding-left: 46px; margin-bottom: 52px; }
+    .exp-dot { position: absolute; left: 0; top: 5px; width: 23px; height: 23px; border-radius: 50%; background: var(--rose); border: 3px solid var(--white); box-shadow: 0 0 0 2px var(--rose); }
+    .exp-period { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); margin-bottom: 5px; }
+    .exp-company { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+    .exp-role { font-size: 0.85rem; font-weight: 500; color: var(--ink-mid); margin-bottom: 14px; }
+    .exp-desc { font-size: 0.86rem; color: var(--ink-mid); line-height: 1.75; margin-bottom: 14px; font-style: italic; }
+    .exp-bullets { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; }
+    .exp-bullet { display: flex; gap: 10px; align-items: flex-start; font-size: 0.84rem; color: var(--ink-mid); line-height: 1.6; }
+    .bullet-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--rose); flex-shrink: 0; margin-top: 8px; }
+    .exp-ach { background: linear-gradient(135deg, var(--rose-ll), var(--sand)); border-radius: 10px; padding: 18px 22px; margin-bottom: 20px; }
+    .ach-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 8px; }
+    .ach-list { display: flex; flex-direction: column; gap: 5px; }
+    .ach-item { display: flex; gap: 8px; align-items: flex-start; font-size: 0.82rem; color: var(--ink-mid); }
+    .ach-star { color: var(--rose); font-weight: 700; flex-shrink: 0; line-height: 1.5; }
+
+    /* Event photos inside experience */
+    .exp-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
+    .exp-photo { border-radius: 10px; overflow: hidden; aspect-ratio: 4/3; background: var(--sand-d); }
+    .exp-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .exp-photo:hover img { transform: scale(1.04); }
+    .exp-photo-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: var(--ink-muted); font-size: 0.75rem; text-align: center; padding: 12px; }
+    .exp-photo-placeholder svg { width: 28px; height: 28px; opacity: 0.35; }
+
+    /* ── RESULTS / PROOF ── */
+    #results { background: var(--sand); }
+    .results-header { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+    .results-header .divider { margin: 18px auto 0; }
+
+    /* Tab navigation */
+    .tab-nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px; }
+    .tab-btn {
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+      padding: 9px 20px; border-radius: 100px;
+      background: var(--white); border: 1px solid var(--border);
+      color: var(--ink-mid); cursor: pointer;
+      transition: all var(--trans);
+    }
+    .tab-btn.active, .tab-btn:hover { background: var(--rose); border-color: var(--rose); color: var(--white); }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Screenshot grid */
+    .proof-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .proof-grid.three { grid-template-columns: repeat(3, 1fr); }
+    .proof-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: 12px;
+      overflow: hidden; transition: transform var(--trans), box-shadow var(--trans); cursor: default;
+    }
+    .proof-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(0,0,0,0.09); }
+    .proof-img { aspect-ratio: 16/9; overflow: hidden; background: var(--sand-d); }
+    .proof-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.4s ease; }
+    .proof-card:hover .proof-img img { transform: scale(1.03); }
+    .proof-caption { padding: 14px 16px; }
+    .proof-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); margin-bottom: 4px; }
+    .proof-title { font-size: 0.85rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+    .proof-desc { font-size: 0.77rem; color: var(--ink-muted); line-height: 1.5; }
+
+    /* Award card — full width spotlight */
+    .award-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: 12px;
+      overflow: hidden; display: grid; grid-template-columns: 1.2fr 1fr; gap: 0;
+    }
+    .award-img { overflow: hidden; background: var(--sand-d); }
+    .award-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .award-body { padding: 40px 36px; display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+    .award-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--rose-ll); color: var(--rose); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 14px; border-radius: 100px; width: fit-content; }
+    .award-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); }
+    .award-detail { font-size: 0.85rem; color: var(--ink-mid); line-height: 1.7; }
+    .award-meta { display: flex; flex-direction: column; gap: 4px; }
+    .award-meta span { font-size: 0.8rem; color: var(--ink-muted); }
+    .award-meta strong { color: var(--ink); }
+
+    /* ── WORKING STYLE ── */
+    #style { background: var(--ink); }
+    #style .section-eyebrow { color: var(--rose-l); }
+    #style .section-title { color: var(--white); }
+    #style .section-sub { color: rgba(255,255,255,0.55); }
+    #style .divider { background: var(--rose-l); }
+    .style-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .style-card { border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 28px 24px; transition: border-color var(--trans), background var(--trans); cursor: default; }
+    .style-card:hover { border-color: var(--rose-l); background: rgba(201,112,90,0.06); }
+    .style-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(201,112,90,0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+    .style-icon svg { width: 20px; height: 20px; color: var(--rose-l); }
+    .style-card-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+    .style-card-desc { font-size: 0.82rem; color: rgba(255,255,255,0.52); line-height: 1.7; }
+
+    /* ── LEARNING ── */
+    #learning { background: var(--sand); }
+    .learning-header { text-align: center; max-width: 560px; margin: 0 auto 48px; }
+    .learning-header .divider { margin: 16px auto 0; }
+    .learning-sub { font-size: 0.9rem; color: var(--ink-mid); line-height: 1.75; margin-top: 14px; }
+    .learn-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .learn-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: 12px;
+      padding: 24px 22px;
+      transition: transform var(--trans), box-shadow var(--trans); cursor: default;
+    }
+    .learn-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.07); }
+    .learn-top { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .learn-icon {
+      width: 38px; height: 38px; flex-shrink: 0; border-radius: 9px;
+      background: var(--rose-ll); display: flex; align-items: center; justify-content: center;
+    }
+    .learn-icon svg { width: 17px; height: 17px; color: var(--rose); }
+    .learn-title { font-weight: 600; font-size: 0.88rem; color: var(--ink); line-height: 1.3; flex: 1; }
+    .learn-badge {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 3px 8px; border-radius: 100px; white-space: nowrap; flex-shrink: 0;
+    }
+    .badge-active { background: rgba(34,197,94,0.12); color: #16a34a; }
+    .badge-ongoing { background: rgba(201,112,90,0.12); color: var(--rose); }
+    .learn-desc { font-size: 0.78rem; color: var(--ink-muted); line-height: 1.6; margin-bottom: 12px; }
+    .learn-progress-bar { height: 3px; background: var(--rose-ll); border-radius: 100px; overflow: hidden; }
+    .learn-progress-fill { height: 100%; background: linear-gradient(90deg, var(--rose), var(--rose-l)); border-radius: 100px; }
+    @media (max-width: 640px) { .learn-grid { grid-template-columns: 1fr; } }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--sand); }
+    .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .contact-body { font-size: 0.93rem; color: var(--ink-mid); line-height: 1.8; margin-bottom: 30px; }
+    .contact-items { display: flex; flex-direction: column; gap: 14px; }
+    .contact-item { display: flex; gap: 13px; align-items: center; }
+    .contact-icon { width: 38px; height: 38px; flex-shrink: 0; background: var(--white); border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .contact-icon svg { width: 15px; height: 15px; color: var(--rose); }
+    .contact-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); }
+    .contact-value { font-size: 0.88rem; color: var(--ink); font-weight: 500; }
+    .contact-value a { color: var(--rose); transition: color var(--trans); }
+    .contact-value a:hover { color: var(--accent); }
+    .contact-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 44px 36px; text-align: center; }
+    .cc-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+    .cc-role { font-size: 0.83rem; color: var(--ink-mid); margin-bottom: 3px; }
+    .cc-tags { font-size: 0.73rem; color: var(--rose); font-weight: 500; letter-spacing: 0.06em; margin-bottom: 28px; }
+    .cc-div { width: 36px; height: 1px; background: var(--border); margin: 0 auto 28px; }
+    .contact-cta { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: var(--rose); color: var(--white); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 24px; border-radius: var(--radius); cursor: pointer; transition: background var(--trans), transform var(--trans); }
+    .contact-cta:hover { background: var(--accent); transform: translateY(-1px); }
+    .contact-cta svg { width: 15px; height: 15px; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--ink); padding: 28px 48px; display: flex; align-items: center; justify-content: space-between; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--white); }
+    .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+
+    /* ── ANIMATIONS ── */
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      nav { padding: 16px 24px; }
+      #hero { padding: 90px 24px 64px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-right { flex-direction: row; justify-content: center; align-items: flex-start; flex-wrap: wrap; }
+      .hero-photo-wrap { width: 220px; height: 270px; }
+      .hero-stats-row { grid-template-columns: repeat(4, 1fr); width: auto; }
+      .comp-grid { grid-template-columns: repeat(2, 1fr); }
+      .style-grid { grid-template-columns: repeat(2, 1fr); }
+      .value-grid, .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .award-card { grid-template-columns: 1fr; }
+      .award-img { aspect-ratio: 16/7; }
+      .proof-grid.three { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      section { padding: 64px 20px; }
+      .hero-right { flex-direction: column; align-items: center; }
+      .hero-stats-row { grid-template-columns: repeat(2, 1fr); width: 100%; max-width: 320px; }
+      .comp-grid, .style-grid, .proof-grid, .proof-grid.three, .exp-photos { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 6px; text-align: center; padding: 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up { opacity: 1; transform: none; transition: none; }
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Trà Duyên</div>
+  <div class="nav-links">
+    <a href="#value">Giá trị</a>
+    <a href="#competencies">Năng lực</a>
+    <a href="#experience">Kinh nghiệm</a>
+    <a href="#results">Dự án</a>
+    <a href="#learning">Học hỏi</a>
+    <a href="#contact">Liên hệ</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-circle c1"></div>
+  <div class="hero-circle c2"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-tag">Digital Marketing Executive</div>
+      <h1 class="hero-name">Nguyễn Thị<br><em>Trà Duyên</em></h1>
+      <p class="hero-role"> Digital Marketing Executive</p>
+      <div class="hero-pills">
+        <span class="pill">SEO</span>
+        <span class="pill">Website</span>
+        <span class="pill">Marketing Ops</span>
+        <span class="pill">Brand Activation</span>
+        <span class="pill">Content</span>
+        <span class="pill">AI SEO</span>
+      </div>
+      <p class="hero-desc">Tôi đến với marketing bằng sự tò mò và ở lại bằng tình yêu nghề và trách nhiệm. Với kinh nghiệm hơn 4 năm, tôi học
+cách xem mỗi thương hiệu mình chạm vào như việc của chính mình - vì tôi tin, khi nơi mình làm lớn mạnh, mình cũng lớn lên cùng.</p>
+      </a>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-photo-wrap">
+        <img src="./photo.jpg" alt="Nguyễn Thị Trà Duyên — Digital Marketing Executive"
+          onerror="this.parentElement.innerHTML='<div class=\'hero-photo-placeholder\'><svg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke-width=\'1.5\' stroke=\'currentColor\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' d=\'M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z\'/></svg><span>Lưu ảnh của bạn<br>tại: CV/photo.jpg</span></div>'" />
+      </div>
+      <div class="hero-stats-row">
+        <div class="stat-card">
+          <div class="stat-num">4+</div>
+          <div class="stat-label">Năm kinh nghiệm Digital Marketing</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Giải thưởng bài viết quốc tế & trong nước</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">Top 1</div>
+          <div class="stat-label">"sảnh chính", biệt thự nghỉ dưỡng & nhiều từ khóa chủ lực</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">648K</div>
+          <div class="stat-label">Lượt hiển thị trên Google Search Console</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE -->
+<section id="value">
+  <div class="container">
+    <div class="value-grid">
+      <div class="fade-up">
+        <div class="section-eyebrow">Tôi mang lại điều gì</div>
+        <h2 class="section-title">Marketing có<br>tính kết nối</h2>
+        <div class="divider"></div>
+        <p class="value-body">Tôi triển khai các hoạt động marketing từ tìm hiểu insight khách hàng, lên chiến lược thương hiệu, SEO, nội dung, website, quảng cáo đến sự kiện và các hoạt động truyền thông thực tế.</p>
+        <p class="value-body">Điểm mạnh không nằm ở một kỹ năng đơn lẻ, mà ở khả năng bao quát nhiều hạng mục, hiểu vai trò từng phần và chủ động kết nối các bộ phận, làm teamwork để công việc triển khai hiệu quả hơn.</p>
+        <div class="value-quote">"Tôi có tư duy logic, tìm hiểu những vấn đề mới, luôn sẵn sàng hỗ trợ ở những phần việc cần thiết để công việc chung được vận hành hiệu quả hơn."</div>
+      </div>
+      <div class="value-cards fade-up">
+        <div class="value-item">
+          <div class="value-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" /></svg></div>
+          <div><div class="value-item-title">SEO & Tăng trưởng tìm kiếm</div><div class="value-item-desc">Top 0, Top 1 Google. SEO Website, Video, Local và AI SEO.</div></div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0H3" /></svg></div>
+          <div><div class="value-item-title">Website & UX/UI tối ưu</div><div class="value-item-desc">Cải thiện cấu trúc, trải nghiệm người dùng và khả năng chuyển đổi.</div></div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" /></svg></div>
+          <div><div class="value-item-title">Marketing Operations</div><div class="value-item-desc">Lập kế hoạch, kết hợp với các bộ phận, nghiên cứu thị trường, phân tích insight khách hàng, quản trị kênh và đảm bảo tiến độ.</div></div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" /></svg></div>
+          <div><div class="value-item-title">Production & Brand Activation</div><div class="value-item-desc">Điều phối chụp ảnh, TVC, sự kiện, POSM và decor không gian thương hiệu.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETENCIES -->
+<section id="competencies">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;max-width:560px;margin:0 auto 48px;">
+      <div class="section-eyebrow">Năng lực cốt lõi</div>
+      <h2 class="section-title">6 lĩnh vực chuyên môn</h2>
+      <div class="divider" style="margin:16px auto 0;"></div>
+    </div>
+    <div class="comp-grid">
+      <div class="comp-card fade-up">
+        <div class="comp-num">01</div>
+        <div class="comp-title">Digital Growth</div>
+        <div class="comp-tags"><span class="comp-tag">SEO Website</span><span class="comp-tag">SEO Video</span><span class="comp-tag">SEO Local</span><span class="comp-tag">AI SEO</span><span class="comp-tag">Meta Ads</span><span class="comp-tag">Zalo OA</span><span class="comp-tag">GA4</span><span class="comp-tag">GSC</span></div>
+        <div class="comp-desc">Xây dựng bộ từ khóa, tối ưu nội dung, cải thiện khả năng hiển thị tìm kiếm và triển khai nội dung theo mục tiêu tăng trưởng dài hạn.</div>
+      </div>
+      <div class="comp-card fade-up">
+        <div class="comp-num">02</div>
+        <div class="comp-title">Website & UX/UI</div>
+        <div class="comp-tags"><span class="comp-tag">Cấu trúc SEO</span><span class="comp-tag">UX/UI</span><span class="comp-tag">Outsource</span><span class="comp-tag">QA</span></div>
+        <div class="comp-desc">Tối ưu cấu trúc website phục vụ SEO, đề xuất cải thiện giao diện theo hành vi người dùng và kiểm tra lỗi hiển thị.</div>
+      </div>
+      <div class="comp-card fade-up">
+        <div class="comp-num">03</div>
+        <div class="comp-title">Marketing Operations</div>
+        <div class="comp-tags"><span class="comp-tag">Kế hoạch TT</span><span class="comp-tag">Quản trị kênh</span><span class="comp-tag">Consumer Insight</span><span class="comp-tag">CTV & Outsource</span><span class="comp-tag">Market Research</span><span class="comp-tag">Brand Strategy</span></div>
+        <div class="comp-desc">Lập kế hoạch truyền thông, phân tích Insights, bối cảnh doanh nghiệp, quản trị fanpage và làm việc với đối tác bên ngoài.</div>
+      </div>
+      <div class="comp-card fade-up">
+        <div class="comp-num">04</div>
+        <div class="comp-title">Production & Media</div>
+        <div class="comp-tags"><span class="comp-tag">Chụp ảnh</span><span class="comp-tag">TVC</span><span class="comp-tag">Báo chí</span><span class="comp-tag">QC hình ảnh</span></div>
+        <div class="comp-desc">Điều phối chụp ảnh, video team, TVC và đơn vị truyền thông. Chuẩn bị yêu cầu hình ảnh và kiểm soát chất lượng đầu ra.</div>
+      </div>
+      <div class="comp-card fade-up">
+        <div class="comp-num">05</div>
+        <div class="comp-title">Event & Brand Activation</div>
+        <div class="comp-tags"><span class="comp-tag">Sự kiện</span><span class="comp-tag">POSM</span><span class="comp-tag">Decor</span><span class="comp-tag">Tư vấn booth</span></div>
+        <div class="comp-desc">Tổ chức sự kiện, chuẩn bị POSM, setup không gian nhà mẫu, decor khu trưng bày và tư vấn khách hàng tại booth.</div>
+      </div>
+      <div class="comp-card fade-up">
+        <div class="comp-num">06</div>
+        <div class="comp-title">Team Support</div>
+        <div class="comp-tags"><span class="comp-tag">Mentoring</span><span class="comp-tag">Quy trình</span><span class="comp-tag">Tài liệu</span><span class="comp-tag">Checklist</span></div>
+        <div class="comp-desc">Đồng hành thực tập sinh và nhân sự mới tiếp cận Content Marketing và SEO. Chuẩn hóa tài liệu và xây dựng quy trình làm việc.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="fade-up" style="margin-bottom:52px;">
+      <div class="section-eyebrow">Hành trình</div>
+      <h2 class="section-title">Kinh nghiệm làm việc</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="exp-timeline">
+
+      <div class="exp-item fade-up">
+        <div class="exp-dot"></div>
+        <div class="exp-period">2024 – Nay</div>
+        <div class="exp-company">Freelance Digital Marketing</div>
+        <div class="exp-role">Nhận dự án độc lập · song song với công việc toàn thời gian</div>
+        <div class="exp-bullets">
+          <div class="exp-bullet"><span class="bullet-dot"></span>Chăm sóc fanpage: lên lịch đăng bài, viết nội dung, quản trị bình luận và tin nhắn</div>
+          <div class="exp-bullet"><span class="bullet-dot"></span>Chạy Meta Ads: thiết lập chiến dịch, tối ưu ngân sách và theo dõi hiệu quả chuyển đổi</div>
+          <div class="exp-bullet"><span class="bullet-dot"></span>Phân tích và đánh giá cũng như dựa vào yêu cầu rồi lên sitemap đúng với tinh thần thương hiệu</div>
+          <div class="exp-bullet"><span class="bullet-dot"></span>Tối ưu SEO Google Maps: chuẩn hóa thông tin doanh nghiệp trên các nên tảng social chuẩn SEO, xây dựng và tăng hiển thị Local</div>
+        </div>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-dot"></div>
+        <div class="exp-period">09/2024 – 04/2026</div>
+        <div class="exp-company">Prestige Construction Interiors</div>
+        <div class="exp-role">Digital Marketing Executive</div>
+        <p class="exp-desc">Giai đoạn phát triển mạnh về khả năng bao quát và điều phối marketing — từ digital, sự kiện, hình ảnh, POSM, decor đến phối hợp vận hành nhiều phòng ban.</p>
+        <div class="exp-bullets">
+          <div class="exp-bullet"><span class="bullet-dot"></span>Triển khai SEO Website, Video, Local và AI SEO cho lĩnh vực nội thất</div>
+          <div class="exp-bullet"><span class="bullet-dot"></span>Đưa nhiều từ khóa đạt Top 0, Top 1 và Top 10 Google</div>
+          <div class="exp-bullet"><span class="bullet-dot"></span>Tối ưu website theo định hướng SEO, UX/UI và chuyển đổi</div>
+          <div class="exp-bullet"><span class="bullet-dot"></span>Triển khai Meta Ads và các hoạt động chăm sóc kênh</div>
+          <div class="exp-bullet"><span class="bullet-dot"></span>Điều phối đối tác chụp ảnh, TVC, báo chí và outsource</div>
+          <div class="exp-bullet"><span class="bullet-dot"></span>Tham gia chuẩn bị POSM, decor không gian nhà mẫu và sự kiện</div>
+          <div class="exp-bullet"><span class="bullet-dot"></span>Đồng hành thực tập sinh và nhân sự mới tiếp cận Content và SEO</div>
+        </div>
+        <div class="exp-ach">
+          <div class="ach-title">Thành tích nổi bật</div>
+          <div class="ach-list">
+            <div class="ach-item"><span class="ach-star">✦</span><span>02 bài viết đạt giải quốc tế (AADA 2025 – Best Conceptual Interior Design)</span></div>
+            <div class="ach-item"><span class="ach-star">✦</span><span>01 bài viết đạt giải trong nước</span></div>
+            <div class="ach-item"><span class="ach-star">✦</span><span>Top 1 Google: "sành chính", "thiết kế biệt thự nghỉ dưỡng", "thiết kế kiến trúc nhà" và nhiều từ khóa Long-tail</span></div>
+            <div class="ach-item"><span class="ach-star">✦</span><span>Top 3 Google: "dịch vụ thiết kế nội thất" (từ khóa cạnh tranh cao, lượng tìm kiếm lớn)</span></div>
+            <div class="ach-item"><span class="ach-star">✦</span><span>9.51K clicks · 648K+ impressions qua Google Search Console</span></div>
+        </div>
+        <div class="exp-photos">
+          <div class="exp-photo">
+            <img src="./event1.jpg" alt="Tư vấn khách hàng tại sự kiện Prestige"
+              onerror="this.parentElement.innerHTML='<div class=\'exp-photo-placeholder\'><svg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke-width=\'1.5\' stroke=\'currentColor\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' d=\'m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z\'/></svg><span>Lưu ảnh sự kiện 1<br>tại: CV/event1.jpg</span></div>'" />
+          </div>
+          <div class="exp-photo">
+            <img src="./event2.jpg" alt="Booth Prestige Construction Interiors tại sự kiện"
+              onerror="this.parentElement.innerHTML='<div class=\'exp-photo-placeholder\'><svg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke-width=\'1.5\' stroke=\'currentColor\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' d=\'m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z\'/></svg><span>Lưu ảnh sự kiện 2<br>tại: CV/event2.jpg</span></div>'" />
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-dot"></div>
+        <div class="exp-period">09/2022 – 08/2024</div>
+        <div class="exp-company">3A Design</div>
+        <div class="exp-role">Digital Marketing</div>
+        <p class="exp-desc">Giai đoạn xây nền tảng thực thi digital: SEO, Content, Meta Ads và quản trị kênh trong lĩnh vực xây dựng và nội thất.</p>
+        <div class="exp-bullets">
+          <div class="exp-bullet"><span class="bullet-dot"></span>Triển khai SEO Website và Content Marketing trong lĩnh vực xây dựng và nội thất</div>
+          <div class="exp-bullet"><span class="bullet-dot"></span>Tối ưu nội dung video theo hành vi tìm kiếm và mục tiêu chuyển đổi</div>
+          <div class="exp-bullet"><span class="bullet-dot"></span>Triển khai Meta Ads, quản trị fanpage, website và Zalo OA</div>
+        </div>
+        <div class="exp-ach">
+          <div class="ach-title">Kết quả nổi bật</div>
+          <div class="ach-list">
+            <div class="ach-item"><span class="ach-star">✦</span><span>SEO Video mang về 02 khách hàng thuộc nhóm biệt thự</span></div>
+            <div class="ach-item"><span class="ach-star">✦</span><span>Bài viết đạt Top 5 Google trong lĩnh vực cạnh tranh cao</span></div>
+            <div class="ach-item"><span class="ach-star">✦</span><span>Mang về từ 3 đến 5 khách hàng tiềm năng làm về nhà phố và biệt thự</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item fade-up" style="margin-bottom:0;">
+        <div class="exp-dot"></div>
+        <div class="exp-period">06/2022 – 09/2022</div>
+        <div class="exp-company">Gold Home</div>
+        <div class="exp-role">Content & Event Marketing</div>
+        <div class="exp-bullets">
+          <div class="exp-bullet"><span class="bullet-dot"></span>Viết và triển khai nội dung SEO, fanpage</div>
+          <div class="exp-bullet"><span class="bullet-dot"></span>Hỗ trợ tổ chức sự kiện Kick-off và truyền thông nội bộ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS / PROOF -->
+<section id="results">
+  <div class="container">
+    <div class="results-header fade-up">
+      <div class="section-eyebrow">Bằng chứng thực tế</div>
+      <h2 class="section-title">Kết quả có thể đo lường</h2>
+      <p class="section-sub" style="margin:0 auto;">Dưới đây là những kết quả thực tế từ các dự án SEO, kênh số và thương hiệu tôi đã triển khai.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="tab-nav fade-up">
+      <button class="tab-btn active" onclick="showTab('seo')">SEO & Google Rankings</button>
+      <button class="tab-btn" onclick="showTab('performance')">Hiệu suất kênh</button>
+      <button class="tab-btn" onclick="showTab('award')">Giải thưởng</button>
+    </div>
+
+    <!-- SEO Tab -->
+    <div class="tab-panel active" id="tab-seo">
+      <div class="proof-grid fade-up">
+        <div class="proof-card">
+          <div class="proof-img">
+            <img src="./du-an/Screenshot 2026-06-24 215552.png" alt="Google Search Console — 9.51K clicks, 648K impressions" loading="lazy" />
+          </div>
+          <div class="proof-caption">
+            <div class="proof-label">Google Search Console</div>
+            <div class="proof-title">9.51K clicks · 648K impressions</div>
+            <div class="proof-desc">Hiệu suất tìm kiếm tổng thể qua 12 tháng triển khai SEO tại Prestige Construction Interiors.</div>
+          </div>
+        </div>
+        <div class="proof-card">
+          <div class="proof-img">
+            <img src="./du-an/Screenshot 2026-06-24 220317.png" alt="Top 3 Google — dịch vụ thiết kế nội thất" loading="lazy" />
+          </div>
+          <div class="proof-caption">
+            <div class="proof-label">SEO Ranking</div>
+            <div class="proof-title">Top 3 — "dịch vụ thiết kế nội thất"</div>
+            <div class="proof-desc">Prestige Construction Interiors xuất hiện Top 3 Google cho từ khóa cạnh tranh cao, lượng tìm kiếm lớn trong lĩnh vực nội thất.</div>
+          </div>
+        </div>
+        <div class="proof-card">
+          <div class="proof-img">
+            <img src="./du-an/Screenshot 2026-06-24 220341.png" alt="Top Google — dịch vụ thiết kế kiến trúc nhà" loading="lazy" />
+          </div>
+          <div class="proof-caption">
+            <div class="proof-label">SEO Ranking</div>
+            <div class="proof-title">Top Google — "dịch vụ thiết kế kiến trúc nhà"</div>
+            <div class="proof-desc">Xuất hiện trong nhóm kết quả đầu tiên cho từ khóa thiết kế kiến trúc.</div>
+          </div>
+        </div>
+        <div class="proof-card">
+          <div class="proof-img">
+            <img src="./du-an/Screenshot 2026-06-24 220430.png" alt="Top Google — thiết kế biệt thự nghỉ dưỡng" loading="lazy" />
+          </div>
+          <div class="proof-caption">
+            <div class="proof-label">SEO Ranking</div>
+            <div class="proof-title">Top Google — "thiết kế biệt thự nghỉ dưỡng"</div>
+            <div class="proof-desc">Từ khóa giá trị cao, đối tượng khách hàng phân khúc biệt thự nghỉ dưỡng.</div>
+          </div>
+        </div>
+        <div class="proof-card">
+          <div class="proof-img">
+            <img src="./du-an/Screenshot 2026-06-24 220527.png" alt="SEO Local + AI Overview — công ty nội thất phường Tân Hưng" loading="lazy" />
+          </div>
+          <div class="proof-caption">
+            <div class="proof-label">SEO Local + AI Overview</div>
+            <div class="proof-title">Google Local Pack & AI Summary</div>
+            <div class="proof-desc">Prestige xuất hiện trong Google Local Pack và được AI của Google tóm tắt nổi bật cho "công ty nội thất uy tín" tại TP.HCM.</div>
+          </div>
+        </div>
+        <div class="proof-card">
+          <div class="proof-img">
+            <img src="./du-an/Screenshot 2026-06-24 220631.png" alt="AI Overview — công ty nội thất uy tín" loading="lazy" />
+          </div>
+          <div class="proof-caption">
+            <div class="proof-label">AI SEO</div>
+            <div class="proof-title">AI Overview — "công ty nội thất uy tín"</div>
+            <div class="proof-desc">Google AI tự động đề xuất Prestige cho từ khóa tìm kiếm có ý định cao — kết quả của chiến lược AI SEO được triển khai bài bản.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Performance Tab -->
+    <div class="tab-panel" id="tab-performance">
+      <div class="proof-grid fade-up">
+        <div class="proof-card">
+          <div class="proof-img" style="aspect-ratio:16/8;">
+            <img src="./du-an/Screenshot 2026-06-24 231603.png" alt="Facebook Page Insights" loading="lazy" />
+          </div>
+          <div class="proof-caption">
+            <div class="proof-label">Facebook Page Insights · 13/4 – 24/6</div>
+            <div class="proof-title">119K lượt xem (+74%) · 5.417 tương tác (+25%) · 325 theo dõi thực (+52%)</div>
+            <div class="proof-desc">Kết quả chăm sóc fanpage liên tục — content đều đặn, tương tác tăng trưởng bền vững qua từng tháng.</div>
+          </div>
+        </div>
+        <div class="proof-card">
+          <div class="proof-img">
+            <img src="./du-an/Screenshot 2026-06-24 215552.png" alt="Google Search Console trend — impressions tăng trưởng" loading="lazy" />
+          </div>
+          <div class="proof-caption">
+            <div class="proof-label">Google Search Console</div>
+            <div class="proof-title">Impressions tăng trưởng liên tục</div>
+            <div class="proof-desc">Xu hướng tăng trưởng rõ rệt sau khi triển khai chiến lược SEO — từ vị trí trung bình 14 tiến dần lên Top.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Award Tab -->
+    <div class="tab-panel" id="tab-award">
+      <div class="award-card fade-up">
+        <div class="award-img">
+          <img src="./du-an/Screenshot 2026-06-24 230819.png" alt="AADA 2025 — Best Conceptual Interior Design, Zen The MarQ" loading="lazy" />
+        </div>
+        <div class="award-body">
+          <div class="award-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" style="width:14px;height:14px"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 0 1 3 3h-15a3 3 0 0 1 3-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 0 1-.982-3.172M9.497 14.25a7.454 7.454 0 0 0 .981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 0 0 7.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 0 0 2.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 0 1 2.916.52 6.003 6.003 0 0 1-5.395 4.972m0 0a6.726 6.726 0 0 1-2.749 1.35m0 0a6.772 6.772 0 0 1-3.044 0" /></svg>
+            Giải thưởng quốc tế
+          </div>
+          <h3 class="award-title">Best Conceptual Interior Design</h3>
+          <p class="award-detail">Dự án Zen The MarQ của Prestige Construction Interiors được vinh danh tại Asia Architecture Design Awards (AADA 2025) — một trong những giải thưởng kiến trúc nội thất uy tín nhất châu Á.</p>
+          <div class="award-meta">
+            <span><strong>Giải thưởng:</strong> AADA 2025 — Asia Architecture Design Awards</span>
+            <span><strong>Hạng mục:</strong> Best Conceptual Interior Design</span>
+            <span><strong>Chủ đề:</strong> Vibrant Asia – A Sống động</span>
+            <span><strong>Lễ trao giải:</strong> Seoul, Hàn Quốc</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKING STYLE -->
+<section id="style">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;max-width:560px;margin:0 auto 52px;">
+      <div class="section-eyebrow">Phong cách làm việc</div>
+      <h2 class="section-title">Cách tôi tiếp cận mọi dự án</h2>
+      <div class="divider" style="margin:16px auto 0;"></div>
+    </div>
+    <div class="style-grid">
+      <div class="style-card fade-up">
+        <div class="style-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg></div>
+        <div class="style-card-title">Chủ động</div>
+        <div class="style-card-desc">Quen nhìn ra việc cần làm, tìm hướng xử lý và đề xuất giải pháp thay vì chỉ chờ phân công.</div>
+      </div>
+      <div class="style-card fade-up">
+        <div class="style-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg></div>
+        <div class="style-card-title">Trách nhiệm</div>
+        <div class="style-card-desc">Khi nhận việc, theo sát đến khi hoàn thành — đặc biệt với những đầu việc có nhiều bên liên quan.</div>
+      </div>
+      <div class="style-card fade-up">
+        <div class="style-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg></div>
+        <div class="style-card-title">Bao quát</div>
+        <div class="style-card-desc">Khả năng nhìn tổng thể hoạt động marketing — từ digital, nội dung, website đến sự kiện, POSM và sản xuất hình ảnh.</div>
+      </div>
+      <div class="style-card fade-up">
+        <div class="style-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" /></svg></div>
+        <div class="style-card-title">Tư duy hệ thống</div>
+        <div class="style-card-desc">Thích sắp xếp công việc thành quy trình, checklist và tài liệu để đội nhóm dễ phối hợp và triển khai nhất quán.</div>
+      </div>
+      <div class="style-card fade-up">
+        <div class="style-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg></div>
+        <div class="style-card-title">Học nhanh</div>
+        <div class="style-card-desc">Tiếp cận nhanh với công cụ, nền tảng và công nghệ mới — đặc biệt là các ứng dụng AI trong marketing.</div>
+      </div>
+      <div class="style-card fade-up">
+        <div class="style-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" /></svg></div>
+        <div class="style-card-title">Kết nối</div>
+        <div class="style-card-desc">Kinh nghiệm làm việc với nhiều phòng ban, đối tác và nguồn lực bên ngoài để thông tin đúng, tiến độ rõ và đầu ra đạt yêu cầu.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEARNING & DEVELOPMENT -->
+<section id="learning">
+  <div class="container">
+    <div class="learning-header fade-up">
+      <div class="section-eyebrow">Học hỏi & Phát triển</div>
+      <h2 class="section-title">Luôn học để làm tốt hơn</h2>
+      <div class="divider"></div>
+      <p class="learning-sub">Tôi đang tự học thêm về Data Analytics và AI để đưa ra các quyết định marketing dựa trên dữ liệu thực tế, không chỉ cảm tính.</p>
+    </div>
+    <div class="learn-grid fade-up">
+
+      <div class="learn-card">
+        <div class="learn-top">
+          <div class="learn-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" /></svg>
+          </div>
+          <div class="learn-title">Data Analytics for Marketing</div>
+          <span class="learn-badge badge-active">Đang học</span>
+        </div>
+        <div class="learn-desc">GA4 nâng cao, phân tích hành vi người dùng, funnel chuyển đổi và báo cáo hiệu suất dựa trên dữ liệu.</div>
+        <div class="learn-progress-bar"><div class="learn-progress-fill" style="width:55%"></div></div>
+      </div>
+
+      <div class="learn-card">
+        <div class="learn-top">
+          <div class="learn-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" /></svg>
+          </div>
+          <div class="learn-title">AI ứng dụng trong Marketing</div>
+          <span class="learn-badge badge-active">Đang áp dụng</span>
+        </div>
+        <div class="learn-desc">Dùng AI để nghiên cứu từ khóa, viết brief, tối ưu SEO và lên kế hoạch truyền thông nhanh hơn, hiệu quả hơn.</div>
+        <div class="learn-progress-bar"><div class="learn-progress-fill" style="width:70%"></div></div>
+      </div>
+
+      <div class="learn-card">
+        <div class="learn-top">
+          <div class="learn-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" /></svg>
+          </div>
+          <div class="learn-title">SEMrush & Công cụ phân tích SEO</div>
+          <span class="learn-badge badge-ongoing">Thực hành</span>
+        </div>
+        <div class="learn-desc">Phân tích gap từ khóa, nghiên cứu đối thủ và xây dựng chiến lược nội dung dài hạn với SEMrush, Ahrefs, GSC.</div>
+        <div class="learn-progress-bar"><div class="learn-progress-fill" style="width:65%"></div></div>
+      </div>
+
+      <div class="learn-card">
+        <div class="learn-top">
+          <div class="learn-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0H3" /></svg>
+          </div>
+          <div class="learn-title">UX Writing & Conversion Copy</div>
+          <span class="learn-badge badge-ongoing">Nghiên cứu</span>
+        </div>
+        <div class="learn-desc">Viết nội dung theo tư duy UX — microcopy, CTA, landing page — để cải thiện trải nghiệm và tỷ lệ chuyển đổi.</div>
+        <div class="learn-progress-bar"><div class="learn-progress-fill" style="width:40%"></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-wrap">
+      <div class="fade-up">
+        <div class="section-eyebrow">Liên hệ</div>
+        <h2 class="section-title">Cùng bắt đầu<br>dự án mới?</h2>
+        <div class="divider"></div>
+        <p class="contact-body">Nếu Quý công ty đang tìm kiếm một nhân sự Marketing không chỉ triển khai mà còn có tư duy phân tích, luôn chủ động khai thác dữ liệu để thấu hiểu khách hàng, tối ưu hoạt động marketing và không ngừng học hỏi, tôi rất mong có cơ hội được trao đổi.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg></div>
+            <div><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:duyennguyenmkt14@gmail.com">duyennguyenmkt14@gmail.com</a></div></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" /></svg></div>
+            <div><div class="contact-label">Phone</div><div class="contact-value"><a href="tel:0908820869">0908 820 869</a></div></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg></div>
+            <div><div class="contact-label">Location</div><div class="contact-value">TP. Hồ Chí Minh</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-card fade-up">
+        <div class="cc-name">Nguyễn Thị Trà Duyên</div>
+        <div class="cc-role">Digital Marketing Executive</div>
+        <div class="cc-tags">SEO · Website · Marketing Operations · Brand Activation</div>
+        <div class="cc-div"></div>
+        <a href="mailto:duyennguyenmkt14@gmail.com" class="contact-cta">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg>
+          Gửi email cho tôi
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Nguyễn Thị Trà Duyên</div>
+  <div class="footer-copy">Digital Marketing Executive · TP. Hồ Chí Minh · 2026</div>
+</footer>
+
+<script>
+  // Scroll animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Tab system
+  function showTab(id) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.target.classList.add('active');
+
+    // Re-observe newly visible elements for animation
+    document.querySelectorAll('#tab-' + id + ' .fade-up').forEach(el => {
+      el.classList.remove('visible');
+      observer.observe(el);
+    });
+  }
+</script>
+</body>
+</html>
